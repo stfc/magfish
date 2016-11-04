@@ -24,3 +24,31 @@ def requestErrorMessages():
     print("\n~  You have a stable internet connection.")
     print("\n~  OpenVPN is connected and successfully authenticated.")
     print("\n~  The IP address provided is correct and the corresponding machine is online and has RedFish installed.")
+
+def get(requestAddress,authRequired):
+    requestAddress = "https://" + ADDRESS + requestAddress
+
+    print("Requesting from %s..." % (requestAddress))
+
+    response = ""
+
+    try:
+        if authRequired:
+            #if auth is required, pass request with already provided credentials
+            response = requests.get(requestAddress,headers=HEADERS,verify=False,auth=(USER,PASSWORD))
+        else:
+            response = requests.get(requestAddress,headers="HEADERS",verify=False)
+        print("Successful")
+    except Exception as error:
+        print("Error")
+        requestErrorMessages()
+        sys.exit()
+
+    try:
+        response = response.json()
+    except Exception as error:
+        print("There was an error parsing the response as JSON")
+        print("Error:" + error)
+        sys.exit()
+
+    return response
