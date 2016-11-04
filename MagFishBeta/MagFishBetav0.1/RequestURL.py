@@ -37,7 +37,7 @@ def get(requestAddress,authRequired):
             #if auth is required, pass request with already provided credentials
             response = requests.get(requestAddress,headers=HEADERS,verify=False,auth=(USER,PASSWORD))
         else:
-            response = requests.get(requestAddress,headers="HEADERS",verify=False)
+            response = requests.get(requestAddress,headers=HEADERS,verify=False)
         print("Successful")
     except Exception as error:
         print("Error")
