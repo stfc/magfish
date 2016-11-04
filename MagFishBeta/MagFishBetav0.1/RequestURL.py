@@ -17,3 +17,10 @@ ADDRESS = ""
 #variables for auth credentials
 USER = ""
 PASSWORD = ""
+
+def requestErrorMessages():
+    #Error message to be displayed when a page request fails
+    print("\nThere was an error contacting the requested page. Please ensure the following requirements are met:")
+    print("\n~  You have a stable internet connection.")
+    print("\n~  OpenVPN is connected and successfully authenticated.")
+    print("\n~  The IP address provided is correct and the corresponding machine is online and has redfish installed.")
