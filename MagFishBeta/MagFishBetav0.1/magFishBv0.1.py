@@ -17,7 +17,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
 args = parser.parse_args()
 
-print("\nInitialising...")
 print("""
  _____         _____ _     _
 |     |___ ___|   __|_|___| |_
@@ -25,6 +24,3 @@ print("""
 |_|_|_|__,|_  |__|  |_|___|_|_|
           |___|
 """)
-
-
-print(RequestURL.get("/redfish/v1",False))
