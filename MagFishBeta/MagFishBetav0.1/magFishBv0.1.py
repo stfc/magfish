@@ -24,3 +24,9 @@ print("""
 |_|_|_|__,|_  |__|  |_|___|_|_|
           |___|
 """)
+
+RequestURL.ADDRESS = str(args.ip)
+
+print("Checking initial connection...")
+testResponse = RequestURL.get("/redfish/v1",False)
+print(testResponse)
