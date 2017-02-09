@@ -1,6 +1,7 @@
 try:
     import requests #main package for http requests
     import sys
+    import getpass
 except ImportError as error:
     print("There was an error importing one or more of the modules. Are they named correctly?")
     print("\nError: " + str(error))
@@ -15,8 +16,19 @@ HEADERS = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,imag
 #variable for ip address of machine
 ADDRESS = ""
 #variables for auth credentials
-USER = ""
-PASSWORD = ""
+
+def authenticate():
+
+    USER = ""
+    PASSWORD = ""
+
+    while USER == "":
+        USER = input("\nPlease enter the username for the server: ")
+
+    while PASSWORD == "":
+        PASSWORD = getpass.getpass(prompt="\nPlease enter the password for the server: ")
+
+        authResponse = get("/redfish/v1/Systems/",True,USER,PASSWORD)
 
 def requestErrorMessages():
     #Error message to be displayed when a page request fails
@@ -24,8 +36,9 @@ def requestErrorMessages():
     print("\n~  You have a stable internet connection.")
     print("\n~  OpenVPN is connected and successfully authenticated.")
     print("\n~  The IP address provided is correct and the corresponding machine is online and has RedFish installed.")
+    print("\n~  The login credentials you provided are correct.")
 
-def get(requestAddress,authRequired):
+def get(requestAddress,authRequired,USER,PASSWORD):
     requestAddress = "https://" + ADDRESS + requestAddress
 
     print("Requesting from %s..." % (requestAddress))
@@ -47,8 +60,7 @@ def get(requestAddress,authRequired):
     try:
         response = response.json()
     except Exception as error:
-        print("There was an error parsing the response as JSON")
-        print("Error:" + error)
+        requestErrorMessages()
         sys.exit()
 
     return response
