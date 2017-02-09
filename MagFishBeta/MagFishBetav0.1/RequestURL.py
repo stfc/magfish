@@ -1,5 +1,7 @@
 try:
     import requests #main package for http requests
+    from requests.packages.urllib3.exceptions import InsecureRequestWarning
+    requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     import sys
     import getpass
 except ImportError as error:
@@ -15,7 +17,6 @@ except Exception as error:
 HEADERS = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
 #variable for ip address of machine
 ADDRESS = ""
-#variables for auth credentials
 
 def authenticate():
 
