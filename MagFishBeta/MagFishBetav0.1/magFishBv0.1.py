@@ -30,5 +30,5 @@ RequestURL.ADDRESS = str(args.ip)
 print("Checking initial connection...")
 testResponse = RequestURL.get("/redfish/v1",False,"","")
 
-print("Authenitcating...")
+print("Authenticating...")
 RequestURL.authenticate()

@@ -42,7 +42,7 @@ def requestErrorMessages():
 def get(requestAddress,authRequired,USER,PASSWORD):
     requestAddress = "https://" + ADDRESS + requestAddress
 
-    print("Requesting from %s..." % (requestAddress))
+    print("Requesting from %s..." % (requestAddress),end="")
 
     response = ""
 
