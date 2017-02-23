@@ -16,6 +16,7 @@ except Exception as error:
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
+parser.add_argument("username",help="The username for the server")
 args = parser.parse_args()
 
 print("""
@@ -32,4 +33,4 @@ print("Checking initial connection...")
 testResponse = RequestURL.get("/redfish/v1",False,"","")
 
 print("Authenticating...")
-RequestURL.authenticate()
+RequestURL.authenticate(args.username)
