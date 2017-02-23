@@ -18,13 +18,10 @@ HEADERS = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,imag
 #variable for ip address of machine
 ADDRESS = ""
 
-def authenticate():
+def authenticate(username):
 
-    USER = ""
+    USER = username
     PASSWORD = ""
-
-    while USER == "":
-        USER = input("\nPlease enter the username for the server: ")
 
     while PASSWORD == "":
         PASSWORD = getpass.getpass(prompt="\nPlease enter the password for the server: ")
