@@ -1,5 +1,6 @@
 print("Importing required packages...",end="")
 try:
+    import sys
     import argparse #Used for parsing command line arguments
     import ipaddress
     import RequestURL

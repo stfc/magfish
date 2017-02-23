@@ -1,8 +1,8 @@
 try:
+    import sys
     import requests #main package for http requests
     from requests.packages.urllib3.exceptions import InsecureRequestWarning
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-    import sys
     import getpass
 except ImportError as error:
     print("There was an error importing one or more of the modules. Are they named correctly?")
