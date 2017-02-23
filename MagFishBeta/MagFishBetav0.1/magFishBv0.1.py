@@ -16,7 +16,10 @@ except Exception as error:
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
-parser.add_argument("username",help="The username for the server")
+parser.add_argument("rack_id",help="The ID of the rack the machine is installed in.",type=int)
+parser.add_argument("rack_row",help="The lowest row of the rack the machine is installed in.",type=int)
+parser.add_argument("machine_size",help="The height of the machine in rows.",type=int)
+parser.add_argument("username",help="The username for the server.")
 args = parser.parse_args()
 
 print("""
