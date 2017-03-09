@@ -68,4 +68,4 @@ class Machine:
     def setUnits(self,Units):
         self.Units = Units
     def displayUnits(self):
-        print("\Height of Machine in Units:" + self.getUnits())
+        print("\nHeight of Machine in Units:" + self.getUnits())
