@@ -61,11 +61,4 @@ class Machine:
     def setPosition(self,position):
         self.position = position
     def displayPosition(self):
-        print("\nPosition of Machine in Rack:" + self.getPosition)
-
-    def getUnits(self):
-        return self.Units
-    def setUnits(self,Units):
-        self.Units = Units
-    def displayUnits(self):
-        print("\Height of Machine in Units:" + self.getUnits)
+        print("\nPosition of Machine in Rack:" + self.getPosition())
