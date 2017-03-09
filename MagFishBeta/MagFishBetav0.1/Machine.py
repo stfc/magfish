@@ -14,51 +14,51 @@ class Machine:
     def __init__ (self,ip):
         self.ip = ip
 
-    def getIp():
+    def getIp(self):
         return self.ip
-    def setIp(ip):
+    def setIp(self,ip):
         self.ip = ip
-    def displayIp():
+    def displayIp(self):
         print("\nIP Address:" + self.getIp)
 
-    def getMac():
+    def getMac(self):
         return self.mac
-    def setMac(mac):
+    def setMac(self,mac):
         self.mac = mac
-    def displayIp():
+    def displayIp(self):
         print("\nMAC Address:" + self.getMac)
 
-    def getFqdn():
+    def getFqdn(self):
         return self.fqdn
-    def setFqdn(fqdn):
+    def setFqdn(self,fqdn):
         self.fqdn = fqdn
-    def displayFqdn():
+    def displayFqdn(self):
         print("\nFQDN:" + self.getFqdn)
 
-    def getVendor():
+    def getVendor(self):
         return self.vendor
-    def setVendor(vendor):
+    def setVendor(self,vendor):
         self.vendor = vendor
-    def displayVendor():
+    def displayVendor(self):
         print("\nVendor:" + self.getVendor)
 
-    def getManufact():
+    def getManufact(self):
         return self.manufact
-    def setManufact(manufact):
+    def setManufact(self,manufact):
         self.manufact = manufact
-    def displayManufact():
+    def displayManufact(self):
         print("\nManufacturer:" + self.getManufact)
 
-    def getRack():
+    def getRack(self):
         return self.rack
-    def setRack(rack):
+    def setRack(self,rack):
         self.rack = rack
-    def displayRack():
+    def displayRack(self):
         print("\nServer Rack ID:" + self.getRack)
 
-    def getPosition():
+    def getPosition(self):
         return self.position
-    def setPosition(position):
+    def setPosition(self,position):
         self.position = position
-    def displayPosition():
+    def displayPosition(self):
         print("\nPosition of Machine in Rack:" + self.getPosition)
