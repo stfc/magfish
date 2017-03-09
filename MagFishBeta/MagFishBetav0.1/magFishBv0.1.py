@@ -4,6 +4,7 @@ try:
     import argparse #Used for parsing command line arguments
     import ipaddress
     import RequestURL
+    from Machine import Machine
     print("Done")
 except ImportError as error:
     print("There was an error importing one or more of the modules. Are they named correctly?")
@@ -22,6 +23,11 @@ parser.add_argument("machine_size",help="The height of the machine in rows.",typ
 parser.add_argument("username",help="The username for the server.")
 args = parser.parse_args()
 
+newMachine = Machine(str(args.ip))
+newMachine.setRack(str(args.rack_id))
+newMachine.setPosition(str(args.rack_row))
+newMachine.setUnits(str(args.machine_size))
+
 print("""
  _____         _____ _     _
 |     |___ ___|   __|_|___| |_
@@ -30,10 +36,15 @@ print("""
           |___|
 """)
 
-RequestURL.ADDRESS = str(args.ip)
+RequestURL.ADDRESS = newMachine.getIp()
 
 print("Checking initial connection...")
 testResponse = RequestURL.get("/redfish/v1",False,"","")
 
 print("Authenticating...")
 RequestURL.authenticate(args.username)
+
+newMachine.displayIp()
+newMachine.displayRack()
+newMachine.displayPosition()
+newMachine.displayUnits()
