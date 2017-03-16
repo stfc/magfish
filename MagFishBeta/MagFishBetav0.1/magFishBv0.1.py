@@ -44,7 +44,14 @@ testResponse = RequestURL.get("/redfish/v1",False,"","")
 print("Authenticating...")
 RequestURL.authenticate(args.username)
 
+<<<<<<< Updated upstream
 newMachine.displayIp()
 newMachine.displayRack()
 newMachine.displayPosition()
 newMachine.displayUnits()
+=======
+newMachine.displayRack()
+newMachine.displayIp()
+newMachine.displayPosition()
+newMachine.displayUnits
+>>>>>>> Stashed changes

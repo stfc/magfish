@@ -38,10 +38,9 @@ print("""
 
 RequestURL.ADDRESS = newMachine.getIp()
 
-print("Checking initial connection...")
-testResponse = RequestURL.get("/redfish/v1",False,"","")
-
-print("Authenticating...")
+print("Checking Initial Connection and Authenticating...")
+RequestURL.USER = args.username
+RequestURL.PASSWORD = RequestURL.requestPassword()
 RequestURL.authenticate(args.username)
 
 newMachine.displayIp()

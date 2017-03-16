@@ -60,6 +60,7 @@ class Machine:
         return self.position
     def setPosition(self,position):
         self.position = position
+<<<<<<< Updated upstream
     def displayPosition(self):
         print("\nPosition of Machine in Rack:" + self.getPosition())
 
@@ -69,3 +70,14 @@ class Machine:
         self.Units = Units
     def displayUnits(self):
         print("\nHeight of Machine in Units:" + self.getUnits())
+=======
+    def displayPosition():
+        print("\nPosition of Machine in Rack:" + self.getPosition)
+
+    def getUnits():
+        return self.units
+    def setUnits(units):
+        self.units = units
+    def displayUnits():
+        print("\nHeight of Machine in Units:" + self.getUnits)
+>>>>>>> Stashed changes
