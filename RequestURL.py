@@ -17,16 +17,17 @@ except Exception as error:
 HEADERS = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
 #variable for ip address of machine
 ADDRESS = ""
-
+#credentials for the current machine
 def authenticate(username):
+    authResponse = get("/redfish/v1/Systems/",True)
+    print("Authenticated successfully.")
 
-    USER = username
+def requestPassword() :
     PASSWORD = ""
-
     while PASSWORD == "":
         PASSWORD = getpass.getpass(prompt="\nPlease enter the password for the server: ")
+    return PASSWORD
 
-        authResponse = get("/redfish/v1/Systems/",True,USER,PASSWORD)
 
 def requestErrorMessages():
     #Error message to be displayed when a page request fails
@@ -36,8 +37,9 @@ def requestErrorMessages():
     print("\n~  The IP address provided is correct and the corresponding machine is online and has RedFish installed.")
     print("\n~  The login credentials you provided are correct.")
 
-def get(requestAddress,authRequired,USER,PASSWORD):
+def get(requestAddress,authRequired):
     requestAddress = "https://" + ADDRESS + requestAddress
+    credentials = (USER,PASSWORD)
 
     print("Requesting from %s..." % (requestAddress),end="")
 
@@ -46,12 +48,13 @@ def get(requestAddress,authRequired,USER,PASSWORD):
     try:
         if authRequired:
             #if auth is required, pass request with already provided credentials
-            response = requests.get(requestAddress,headers=HEADERS,verify=False,auth=(USER,PASSWORD))
+            response = requests.get(requestAddress,headers=HEADERS,verify=False,auth=credentials)
         else:
             response = requests.get(requestAddress,headers=HEADERS,verify=False)
         print("Successful")
     except Exception as error:
         print("Error")
+        print(str(error))
         requestErrorMessages()
         sys.exit()
 
