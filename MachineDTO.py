@@ -47,7 +47,7 @@ class Machine:
     def setModel(self,model):
         self.model = model
     def displayModel(self):
-        print("\nmodel:" + self.getmodel())
+        print("\nModel:" + self.getmodel())
 
     def getRack(self):
         return self.rack
