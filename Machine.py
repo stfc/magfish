@@ -1,4 +1,4 @@
-CoreModelclass Machine:
+class Machine:
 
     ip = ""
     mac = ""
