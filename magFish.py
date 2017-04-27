@@ -5,6 +5,7 @@ try:
     import ipaddress
     import RequestURL
     from Machine import Machine
+    import RedfishAddresses
     print("Done")
 except ImportError as error:
     print("There was an error importing one or more of the modules. Are they named correctly?")
