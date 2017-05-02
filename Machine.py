@@ -45,21 +45,21 @@ class Machine:
     def setManufact(self,manufact):
         self.manufact = manufact
     def displayManufact(self):
-        print("\nManufacturer:" + self.getManufact())
+        print("\nManufacturer:" + self.getManufact(self))
 
     def getModel(self):
         return self.model
     def setModel(self,model):
         self.model = model
     def displayModel(self):
-        print("\nmodel:" + self.getmodel())
+        print("\nModel:" + self.getModel())
 
     def getSerialNo(self):
         return self.serialNo
     def setSerialNo(self,serialNo):
         self.serialNo = serialNo
     def displaySerialNo(self):
-        print("\nCore Model:" + self.getSerialNo())
+        print("\nSerial Number:" + self.getSerialNo())
 
     def getCoreCount(self):
         return self.coreCount

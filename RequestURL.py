@@ -1,6 +1,8 @@
 try:
     import sys
     import requests #main package for http requests
+    import urllib.request
+    import json
     from requests.packages.urllib3.exceptions import InsecureRequestWarning
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     import getpass
@@ -14,7 +16,8 @@ except Exception as error:
     sys.exit()
 
 #constant for head to be sent with each request
-HEADERS = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
+HEADERS = requests.utils.default_headers()
+HEADERS.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'})
 #variable for ip address of machine
 ADDRESS = ""
 #credentials for the current machine

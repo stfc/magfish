@@ -5,6 +5,7 @@ try:
     import ipaddress
     import RequestURL
     from Machine import Machine
+    import RedfishAddresses
     print("Done")
 except ImportError as error:
     print("There was an error importing one or more of the modules. Are they named correctly?")
@@ -43,7 +44,19 @@ RequestURL.USER = args.username
 RequestURL.PASSWORD = RequestURL.requestPassword()
 RequestURL.authenticate(args.username)
 
-newMachine.displayIp()
-newMachine.displayRack()
-newMachine.displayPosition()
-newMachine.displayUnits()
+print("Gathering main systems information...")
+mainSystems = RequestURL.get(RedfishAddresses.MAIN_SYSTEM_PAGE,True)
+print("Setting basic information...",end="")
+newMachine.setManufact(mainSystems[RedfishAddresses.MANU])
+newMachine.setModel(mainSystems[RedfishAddresses.MODEL])
+newMachine.setSerialNo(mainSystems[RedfishAddresses.SERIAL_NO])
+print("Done")
+print("Retrieving system memory information...",end="")
+newMachineMemory = mainSystems[RedfishAddresses.MEMORY_DATA]
+newMachine.setTotalMemory(int(newMachineMemory[RedfishAddresses.TOTAL_MEMORY]))
+print("Done")
+print("Getting core details...",end="")
+newMachineCores = mainSystems[RedfishAddresses.CORES_DATA]
+newMachine.setCoreModel(newMachineCores[RedfishAddresses.CORE_MODEL])
+newMachine.setCoreCount(int(newMachineCores[RedfishAddresses.CORE_COUNT]))
+print("Done")
