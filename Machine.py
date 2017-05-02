@@ -45,7 +45,7 @@ class Machine:
     def setManufact(self,manufact):
         self.manufact = manufact
     def displayManufact(self):
-        print("\nManufacturer:" + self.getManufact())
+        print("\nManufacturer:" + self.getManufact(self))
 
     def getModel(self):
         return self.model
