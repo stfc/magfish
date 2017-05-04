@@ -1,4 +1,6 @@
 MAIN_SYSTEM_PAGE = "/redfish/v1/Systems/System.Embedded.1"
+INTERFACES_PAGE = "/redfish/v1/Systems/System.Embedded.1/EthernetInterfaces"
+MEMBERS = "Members"
 MANU = "Manufacturer"
 MODEL = "Model"
 SERIAL_NO = "SerialNumber"
