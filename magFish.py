@@ -5,6 +5,7 @@ try:
     import ipaddress
     import RequestURL
     from Machine import Machine
+    from Interface import Interface
     import RedfishAddresses
     print("Done")
 except ImportError as error:
@@ -15,6 +16,26 @@ except Exception as error:
     print("An unknown exception occurred.")
     print("\nError: " + str(error))
     sys.exit()
+
+def chooseMainInterface(interfaces) :
+    displayAllInterfaces(interfaces)
+
+    newMachine.mac = ""
+
+    while newMachine.mac == "":
+        try:
+            newMachine.mac = interfaces[int(input("\nPlease enter the ID of the main interface:"))].mac
+        except:
+            print("Invalid ID.")
+
+
+    print("\nMain Interface Address set to: " + newMachine.mac)
+
+def displayAllInterfaces(interfaces):
+    print("\nInterfaces:")
+    print("===========")
+    for interface in interfaces:
+        interface.displayAll()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
@@ -60,5 +81,23 @@ newMachineCores = mainSystems[RedfishAddresses.CORES_DATA]
 newMachine.coreModel = newMachineCores[RedfishAddresses.CORE_MODEL]
 newMachine.coreCount = int(newMachineCores[RedfishAddresses.CORE_COUNT])
 print("Done")
+print("Collecting network interfaces...")
+networkInterfaces = RequestURL.get(RedfishAddresses.INTERFACES_PAGE,True)[RedfishAddresses.MEMBERS]
+newMachineInterfaces = []
+for interface in networkInterfaces:
+    interfaceData = RequestURL.get(interface[RedfishAddresses.DATA_ID],True)
+    newInterface = Interface((len(newMachineInterfaces) + 1),interfaceData[RedfishAddresses.PERMANENT_MAC_ADDRESS],interfaceData[RedfishAddresses.STATUS][RedfishAddresses.STATE])
+    if newInterface.active:
+        if newMachine.mac == "":
+            print("Interface is enabled. Setting as main machine interface.")
+            newMachine.mac = newInterface.mac
+        else:
+            print("Interface is active, but main interface is already set.")
+    newMachineInterfaces.append(newInterface)
+
+if newMachine.mac == "":
+    print("\nNo network interfaces were active.")
+    chooseMainInterface(newMachineInterfaces)
 
 newMachine.displayAll()
+displayAllInterfaces(newMachineInterfaces)

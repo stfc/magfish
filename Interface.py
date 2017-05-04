@@ -10,13 +10,13 @@ class Interface:
         self.active = active;
 
     def displayId(self):
-        print("\nID: " + str(id))
+        print("\nID: " + str(self.id))
 
     def displayMac(self):
-        print("\nMAC Address: " + mac)
+        print("\nMAC Address: " + self.mac)
 
     def displayActive(self):
-        print("\nActive: " + str(active))
+        print("\nActive: " + str(self.active))
 
     def displayAll(self):
         print("\nInterface:")
@@ -24,3 +24,4 @@ class Interface:
         self.displayId()
         self.displayMac()
         self.displayActive()
+        print("================")
