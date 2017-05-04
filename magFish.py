@@ -25,9 +25,9 @@ parser.add_argument("username",help="The username for the server.")
 args = parser.parse_args()
 
 newMachine = Machine(str(args.ip))
-newMachine.setRack(str(args.rack_id))
-newMachine.setPosition(str(args.rack_row))
-newMachine.setUnits(str(args.machine_size))
+newMachine.rack = str(args.rack_id)
+newMachine.position = str(args.rack_row)
+newMachine.units = str(args.machine_size)
 
 print("""
  _____         _____ _     _
@@ -37,7 +37,7 @@ print("""
           |___|
 """)
 
-RequestURL.ADDRESS = newMachine.getIp()
+RequestURL.ADDRESS = newMachine.ip
 
 print("Checking Initial Connection and Authenticating...")
 RequestURL.USER = args.username
@@ -60,3 +60,5 @@ newMachineCores = mainSystems[RedfishAddresses.CORES_DATA]
 newMachine.coreModel = newMachineCores[RedfishAddresses.CORE_MODEL]
 newMachine.coreCount = int(newMachineCores[RedfishAddresses.CORE_COUNT])
 print("Done")
+
+newMachine.displayAll()

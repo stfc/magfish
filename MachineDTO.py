@@ -15,25 +15,40 @@ class Machine:
         self.ip = ip
 
     def displayIp(self):
-        print("\nIP Address:" + ip)
+        print("\nIP Address:" + self.ip)
 
-    def displayIp(self):
-        print("\nMAC Address:" + mac)
+    def displayMac(self):
+        print("\nMAC Address:" + self.mac)
 
     def displayFqdn(self):
-        print("\nFQDN:" + fqdn)
+        print("\nFQDN:" + self.fqdn)
 
     def displayManufact(self):
-        print("\nManufacturer:" + manufact)
+        print("\nManufacturer:" + self.manufact)
 
     def displayModel(self):
-        print("\nModel:" + model)
+        print("\nModel:" + self.model)
 
     def displayRack(self):
-        print("\nServer Rack ID:" + rack)
+        print("\nServer Rack ID:" + self.rack)
 
     def displayPosition(self):
-        print("\nPosition of Machine in Rack:" + position)
+        print("\nPosition of Machine in Rack:" + self.position)
 
     def displayUnits(self):
-        print("\nHeight of Machine in Units:" + units)
+        print("\nHeight of Machine in Units:" + self.units)
+
+    def displayAll(self):
+        print("\nCurrent Machine:")
+        print("===========================")
+        self.displayIp()
+        self.displayMac()
+        self.displayFqdn()
+        self.displayManufact()
+        self.displayModel()
+        print("==========================")
+        print("\nPhysical Information:")
+        print("==========================")
+        self.displayRack()
+        self.displayPosition()
+        self.displayUnits()
