@@ -20,37 +20,37 @@ class Machine:
         self.ip = ip
 
     def displayIp(self):
-        print("\nIP Address:" + self.getIp())
+        print("\nIP Address:" + ip)
 
     def displayIp(self):
-        print("\nMAC Address:" + self.getMac())
+        print("\nMAC Address:" + mac)
 
     def displayFqdn(self):
-        print("\nFQDN:" + self.getFqdn())
+        print("\nFQDN:" + fqdn)
 
     def displayManufact(self):
-        print("\nManufacturer:" + self.getManufact(self))
+        print("\nManufacturer:" + manufact)
 
     def displayModel(self):
-        print("\nModel:" + self.getModel())
+        print("\nModel:" + model)
 
     def displaySerialNo(self):
-        print("\nSerial Number:" + self.getSerialNo())
+        print("\nSerial Number:" + serialNo)
 
     def displayCoreCount(self):
         print("\nCore Count:" + str(coreCount))
 
     def displayCoreModel(self):
-        print("\nSerial Number:" + self.getCoreModel())
+        print("\nSerial Number:" + coreModel)
 
     def displayTotalMemory(self):
         print("\nTotal System Memory" + str(totalMemory) + "GB")
 
     def displayRack(self):
-        print("\nServer Rack ID:" + self.getRack())
+        print("\nServer Rack ID:" + rack)
 
     def displayPosition(self):
-        print("\nPosition of Machine in Rack:" + self.getPosition())
+        print("\nPosition of Machine in Rack:" + position)
 
     def displayUnits(self):
-        print("\nHeight of Machine in Units:" + self.getUnits())
+        print("\nHeight of Machine in Units:" + units)
