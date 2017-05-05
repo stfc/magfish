@@ -88,12 +88,13 @@ newMachineInterfaces = []
 for interface in networkInterfaces:
 
     interfaceData = RequestURL.get(interface[RedfishAddresses.DATA_ID],True)
+    status = interfaceData[RedfishAddresses.STATUS][RedfishAddresses.STATE]
     active = False
 
-    if interfaceData[RedfishAddresses.STATUS][RedfishAddresses.STATE] == RedfishAddresses.ENABLED:
+    if status == RedfishAddresses.ENABLED:
         active = True
 
-    newInterface = Interface((len(newMachineInterfaces) + 1),interfaceData[RedfishAddresses.PERMANENT_MAC_ADDRESS],active)
+    newInterface = Interface((len(newMachineInterfaces) + 1),interfaceData[RedfishAddresses.PERMANENT_MAC_ADDRESS],active,status)
 
     if newInterface.active:
 
