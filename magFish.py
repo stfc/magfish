@@ -84,14 +84,26 @@ print("Done")
 print("Collecting network interfaces...")
 networkInterfaces = RequestURL.get(RedfishAddresses.INTERFACES_PAGE,True)[RedfishAddresses.MEMBERS]
 newMachineInterfaces = []
+
 for interface in networkInterfaces:
+
     interfaceData = RequestURL.get(interface[RedfishAddresses.DATA_ID],True)
-    newInterface = Interface((len(newMachineInterfaces) + 1),interfaceData[RedfishAddresses.PERMANENT_MAC_ADDRESS],interfaceData[RedfishAddresses.STATUS][RedfishAddresses.STATE])
+    active = False
+
+    if interfaceData[RedfishAddresses.STATUS][RedfishAddresses.STATE] == RedfishAddresses.ENABLED:
+        active = True
+
+    newInterface = Interface((len(newMachineInterfaces) + 1),interfaceData[RedfishAddresses.PERMANENT_MAC_ADDRESS],active)
+
     if newInterface.active:
+
         if newMachine.mac == "":
+
             print("Interface is enabled. Setting as main machine interface.")
             newMachine.mac = newInterface.mac
+
         else:
+
             print("Interface is active, but main interface is already set.")
     newMachineInterfaces.append(newInterface)
 
