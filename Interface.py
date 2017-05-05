@@ -18,7 +18,7 @@ class Interface:
         print("\nMAC Address: " + self.mac)
 
     def displayStatus(self):
-        print("\Status: " + str(self.status))
+        print("\nStatus: " + str(self.status))
 
     def displayAll(self):
         print("\nInterface:")
