@@ -39,6 +39,7 @@ def displayAllInterfaces(interfaces):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
+parser.add_argument("fqdn",help="The chosen Fully Qualified Domain Name for the server.")
 parser.add_argument("rack_id",help="The ID of the rack the machine is installed in.",type=int)
 parser.add_argument("rack_row",help="The lowest row of the rack the machine is installed in.",type=int)
 parser.add_argument("machine_size",help="The height of the machine in rows.",type=int)
@@ -64,6 +65,7 @@ print("Checking Initial Connection and Authenticating...")
 RequestURL.USER = args.username
 RequestURL.PASSWORD = RequestURL.requestPassword()
 RequestURL.authenticate(args.username)
+newMachine.fqdn = args.fqdn
 
 print("Gathering main systems information...")
 mainSystems = RequestURL.get(RedfishAddresses.MAIN_SYSTEM_PAGE,True)
