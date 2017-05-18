@@ -37,6 +37,32 @@ def displayAllInterfaces(interfaces):
     for interface in interfaces:
         interface.displayAll()
 
+def saveToFile(machine,interfaces):
+    fileName = machine.ip.replace(".","_") + ".txt"
+    print("\nSaving machine info to " + fileName)
+    fileObject = open(fileName,"w")
+    fileObject.write(machine.ip + "\n")
+    fileObject.write(machine.mac + "\n")
+    fileObject.write(machine.fqdn + "\n")
+    fileObject.write(machine.manufact + "\n")
+    fileObject.write(machine.model + "\n")
+    fileObject.write(machine.serialNo + "\n")
+    fileObject.write(str(machine.coreCount) + "\n")
+    fileObject.write(machine.coreModel + "\n")
+    fileObject.write(str(machine.totalMemory) + "\n")
+    fileObject.write(str(machine.rack) + "\n")
+    fileObject.write(str(machine.position) + "\n")
+    fileObject.write(str(machine.units) + "\n")
+
+    for interface in interfaces:
+        fileObject.write(str(interface.id) + "\n")
+        fileObject.write(interface.mac + "\n")
+        fileObject.write(str(interface.active) + "\n")
+        fileObject.write(interface.status + "\n")
+
+    fileObject.close()
+    print("\nFile saved successfully. Thanks for using Magfish.")
+
 parser = argparse.ArgumentParser()
 parser.add_argument("ip",help="The IP address of the server.",type=ipaddress.IPv4Address)
 parser.add_argument("fqdn",help="The chosen Fully Qualified Domain Name for the server.")
@@ -116,3 +142,9 @@ if newMachine.mac == "":
 
 newMachine.displayAll()
 displayAllInterfaces(newMachineInterfaces)
+
+textInput = input("\nWOuld you like to save this information to a text file? (Y/N): ")
+if (textInput.lower() == "y" or textInput.lower() == "yes"):
+    saveToFile(newMachine,newMachineInterfaces)
+else:
+    print("File not saved. Thanks for using Magfish.")
